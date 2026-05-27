@@ -35,7 +35,7 @@ import llm  # local
 
 
 DEFAULT_DB = HERE / ".cache" / "csv-llm-ollama.sqlite"
-DEFAULT_CSV = HERE.parent / "ollama-streamlit" / "site" / "data" / "data1-anonymized.csv"
+DEFAULT_CSV = HERE / "data" / "data1-anonymized.csv"
 
 
 st.set_page_config(
