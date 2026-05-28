@@ -38,7 +38,7 @@ La base de données SQLite contient une table unique :
         date TEXT,                 -- ISO 'YYYY-MM-DD'
         card TEXT,                 -- numéro de carte masqué
         description TEXT,          -- libellé du marchand
-        category TEXT,             -- catégorie en français (ex: 'Cafés', 'Épicerie')
+        category TEXT,             -- catégorie en anglais (ex: 'Groceries', 'Dining')
         amount REAL,               -- montant signé : positif = dépense, négatif = remboursement
         profile TEXT               -- identifiant de la carte
     )
@@ -52,16 +52,16 @@ Conventions importantes :
   `date >= date('now', 'start of month', '-1 month')` et \
   `date < date('now', 'start of month')`.
 - Pour 'cette année', utilise `strftime('%Y', date) = strftime('%Y', 'now')`.
-- Les catégories portent des accents : 'Cafés', 'Épicerie', 'Hébergement web', \
-  'Vêtements', 'Salle d'entraînement', 'Rénovations', 'Éducation', 'Hôtel', \
-  'Publicité', 'Optométriste', 'Paiement carte de crédit', 'Électroniques et logiciels'.
+- Les catégories du jeu de données sont en anglais : 'Business', 'Dining', \
+  'Education', 'Entertainment', 'Fees', 'Groceries', 'Health', 'Housing', \
+  'Payments', 'Refunds', 'Transport', 'Travel', 'Utilities'.
 - Toujours arrondir les montants avec `ROUND(x, 2)`.
 - Si la question demande un total ou un montant, montre la valeur en dollars \
   avec deux décimales et explique brièvement la requête.
 - Quand on parle de **marchands** (« top marchands », « les plus gros \
   marchands », « chez qui je dépense le plus »), il faut **agréger par \
   `description`** avec `GROUP BY description` puis `SUM(amount)`, et exclure \
-  les paiements de carte (`category != 'Paiement carte de crédit'` et \
+  les paiements de carte (`category != 'Payments'` et \
   `amount > 0`).
 
 Quand tu reçois le résultat de `query_sql`, analyse-le et réponds en français \
